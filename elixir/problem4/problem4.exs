@@ -6,4 +6,10 @@ defmodule Palindrome do
 	end
 end
 
-IO.inspect(Palindrome.is_palindrome(122))
+range = 100..999
+products = fn val -> Enum.map(range, fn other_val -> val * other_val end) end
+Enum.flat_map(range, products)
+	|> Enum.uniq
+	|> Enum.filter(fn x -> Palindrome.is_palindrome(x) end)
+	|> Enum.max
+	|> IO.inspect

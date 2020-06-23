@@ -5,7 +5,10 @@ defmodule FindPrimality do
 	def prime_no(nth) do
 		previous = prime_no(nth - 1)
 		range = (previous + 1)..(previous * 2)
-		Enum.filter(range, fn value -> Primality.is_prime(value) end) |> Enum.min
+		Enum.filter(range, fn value -> rem(value, 2) !== 0 end)
+			# |> Enum.filter(fn value -> rem(value, 3) !== 0 end)
+			|> Enum.filter(fn value -> Primality.is_prime(value) end)
+			|> Enum.min
 	end
 end
 

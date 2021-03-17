@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	alafleurUtils "utils"
+)
 
 func main() {
 	fiboSlices := make([]int, 0)
